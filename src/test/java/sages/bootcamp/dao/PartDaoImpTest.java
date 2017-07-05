@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import sages.bootcamp.werchouse.Part;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 
@@ -37,14 +38,24 @@ public class PartDaoImpTest extends AbstractTransactionalJUnit4SpringContextTest
 
     @Test
     public void findPpartById() throws Exception {
+
+        Integer id = jdbcTemplate.queryForObject("SELECT max(id) FROM parts", Integer.class);
+        Part partById = partDaoImp.findPpartById(id);
+        Assertions.assertThat(partById).isNotNull();
     }
 
     @Test
     public void findPpartByCatalogNumber() throws Exception {
+        Integer catalogNumber = jdbcTemplate.queryForObject("SELECT catalog_number FROM parts WHERE catalog_number =  ?", Integer.class, 16488);
+        Part partByCatalogNumber = partDaoImp.findPpartByCatalogNumber(catalogNumber);
+        Assertions.assertThat(partByCatalogNumber).isNotNull();
     }
 
     @Test
-    public void findPart() throws Exception {
+    public void findPartByName() throws Exception {
+        String name = jdbcTemplate.queryForObject("SELECT name FROM parts WHERE name LIKE ?", String.class, "uszczelka");
+        Part partByName = partDaoImp.findPartByName(name);
+        Assertions.assertThat(partByName).isNotNull();
     }
 
 }

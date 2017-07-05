@@ -21,7 +21,7 @@ public class PartDaoImp implements PartDao {
         int id = resultSet.getInt("id");
         String name = resultSet.getString("name");
         int price = resultSet.getInt("price");
-        int catalogNumber = resultSet.getInt("catalogNumber");
+        int catalogNumber = resultSet.getInt("catalog_number");
         return new Part(id, name, price, catalogNumber);
     }
     );
@@ -43,7 +43,7 @@ public class PartDaoImp implements PartDao {
 
 
     @Override
-    public Part findPart(String name) {
+    public Part findPartByName(String name) {
         return jdbcTemplate.queryForObject("SELECT * FROM parts WHERE name LIKE  ?", partRowMapper, name);
     }
 

@@ -14,7 +14,7 @@ public interface PartDao {
 
     Part findPpartByCatalogNumber(int catalogNumber);
 
-    Part findPart(String name);
+    Part findPartByName(String name);
 
     List<Part> findAll();
 }
