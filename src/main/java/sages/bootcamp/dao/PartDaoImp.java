@@ -22,7 +22,8 @@ public class PartDaoImp implements PartDao {
         String name = resultSet.getString("name");
         int price = resultSet.getInt("price");
         int catalogNumber = resultSet.getInt("catalog_number");
-        return new Part(id, name, price, catalogNumber);
+        int available_quantity = resultSet.getInt("available_quantity");
+        return new Part(id, name, price, catalogNumber, available_quantity);
     }
     );
 
@@ -45,6 +46,11 @@ public class PartDaoImp implements PartDao {
     @Override
     public Part findPartByName(String name) {
         return jdbcTemplate.queryForObject("SELECT * FROM parts WHERE name LIKE  ?", partRowMapper, name);
+    }
+
+    @Override
+    public List<Part> findPartByavailable_quantity() {
+        return jdbcTemplate.query("SELECT * FROM parts WHERE available_quantity >0", partRowMapper);
     }
 
     @Override

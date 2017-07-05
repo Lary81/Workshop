@@ -16,5 +16,7 @@ public interface PartDao {
 
     Part findPartByName(String name);
 
+    List<Part> findPartByavailable_quantity();
+
     List<Part> findAll();
 }

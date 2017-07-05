@@ -10,6 +10,14 @@ public class Part {
     int catalogNumber;
     int price;
 
+//    @Override
+//    public String toString() {
+//        return "Part{" +
+//                "available_quantity=" + available_quantity +
+//                '}';
+//    }
+
+    int available_quantity;
     public String getNamePart() {
         return namePart;
     }
@@ -22,11 +30,16 @@ public class Part {
         return price;
     }
 
-    public Part(int id, String namePart, int catalogNumber, int price) {
+    public int getAvailable_quantity() {
+        return available_quantity;
+    }
+
+    public Part(int id, String namePart, int catalogNumber, int price, int available_quantity) {
 
         this.id = id;
         this.namePart = namePart;
         this.catalogNumber = catalogNumber;
         this.price = price;
+        this.available_quantity = available_quantity;
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sages.bootcamp.werchouse.Part;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 
 @ContextConfiguration("classpath:spring.xml")
@@ -56,6 +58,15 @@ public class PartDaoImpTest extends AbstractTransactionalJUnit4SpringContextTest
         String name = jdbcTemplate.queryForObject("SELECT name FROM parts WHERE name LIKE ?", String.class, "uszczelka");
         Part partByName = partDaoImp.findPartByName(name);
         Assertions.assertThat(partByName).isNotNull();
+
+    }
+
+    @Test
+    public void findPpartByavailable_quantity() throws Exception {
+
+        //Integer available_quantity = jdbcTemplate.queryForObject("SELECT available_quantity FROM parts WHERE available_quantity >0 ", Integer.class  );
+        List<Part> partByavailable_quantity = partDaoImp.findPartByavailable_quantity();
+        Assertions.assertThat(partByavailable_quantity.size()).isEqualTo(3);
     }
 
 }
