@@ -35,14 +35,14 @@ INSERT INTO Emploee (NAME, phoneNumber, NIP_PESEL, positionWorker) VALUES ('Janu
 INSERT INTO Emploee (NAME, phoneNumber, NIP_PESEL, positionWorker) VALUES ('Henio', 1032424512, 25198730, 'Mechanik');
 INSERT INTO Emploee (NAME, phoneNumber, NIP_PESEL, positionWorker) VALUES ('Marian', 10324212, 25130, 'Blacharz');
 
-CREATE TABLE order (
+CREATE TABLE orders (
   ID           BIGSERIAL NOT NULL PRIMARY KEY,
   nameOfOrder  TEXT      NOT NULL,
   priceOfOrder DECIMAL   NOT NULL,
   timeOfWork   TEXT      NOT NULL
 );
 
-INSERT INTO order (nameOfOrder, priceOfOrder, timeOfWork) VALUES ('naprawa', 103, '2h');
-INSERT INTO order (nameOfOrder, priceOfOrder, timeOfWork) VALUES ('naprawa', 1023, '4h');
-INSERT INTO order (nameOfOrder, priceOfOrder, timeOfWork) VALUES ('naprawa', 303, '2h 45min');
+INSERT INTO orders (nameOfOrder, priceOfOrder, timeOfWork) VALUES ('naprawa', 103, '2h');
+INSERT INTO orders (nameOfOrder, priceOfOrder, timeOfWork) VALUES ('naprawa', 1023, '4h');
+INSERT INTO orders (nameOfOrder, priceOfOrder, timeOfWork) VALUES ('naprawa', 303, '2h 45min');
 

@@ -17,43 +17,41 @@ public class PartDaoImp implements PartDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private RowMapper<Part> partRowMapper = ((resultSet, i) ->)
-
+    private RowMapper<Part> partRowMapper = ((resultSet, i) -> {
+        int id = resultSet.getInt("id");
+        String name = resultSet.getString("name");
+        int price = resultSet.getInt("price");
+        int catalogNumber = resultSet.getInt("catalogNumber");
+        return new Part(id, name, price, catalogNumber);
+    }
+    );
 
     @Override
     public void addPart(String name, int price, int catalogNumber) {
-        jdbcTemplate.update("INSERT INTO part(name, price,catalogNumber) VALUES (?,?,?)", name, price, catalogNumber);
+        jdbcTemplate.update("INSERT INTO parts(name, price,catalog_number) VALUES (?,?,?)", name, price, catalogNumber);
     }
 
     @Override
     public Part findPpartById(int id) {
-        return null;
+        return jdbcTemplate.queryForObject("SELECT * FROM parts WHERE id = ?", partRowMapper, id);
     }
 
     @Override
     public Part findPpartByCatalogNumber(int catalogNumber) {
-        return null;
+        return jdbcTemplate.queryForObject("SELECT * FROM parts WHERE catalog_number = ?", partRowMapper, catalogNumber);
     }
 
 
     @Override
     public Part findPart(String name) {
-        return null;
+        return jdbcTemplate.queryForObject("SELECT * FROM parts WHERE name LIKE  ?", partRowMapper, name);
     }
 
     @Override
     public List<Part> findAll() {
 
-        return jdbcTemplate.query("SELECT * FROM part", (resultSet, i) -> {
-
-                    int id = resultSet.getInt("id");
-                    String name = resultSet.getString("name");
-                    int price = resultSet.getInt("price");
-                    int catalogNumber = resultSet.getInt("catalogNumber");
-                    return new Part(id, name, price, catalogNumber);
+        return jdbcTemplate.query("SELECT * FROM parts", partRowMapper);
 
 
-                }
-        );
     }
 }

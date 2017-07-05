@@ -5,7 +5,7 @@ import sages.bootcamp.services.CustomerService;
 /**
  * Created by lary8 on 04.07.2017.
  */
-public class CustomerSerwisTest {
+public class CustomerDaoTest {
 
     private CustomerService customerService;
 
