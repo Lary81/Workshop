@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS Workshop;
+CREATE DATABASE Workshop;
+
+-- user
+DROP USER IF EXISTS spring;
+CREATE USER spring WITH PASSWORD 'spring123';
+
+-- privileges
+GRANT ALL PRIVILEGES ON DATABASE Workshop TO spring;
+GRANT USAGE ON SCHEMA public TO spring;
+ALTER USER spring WITH SUPERUSER;
