@@ -60,4 +60,9 @@ public class PartDaoImp implements PartDao {
 
 
     }
+
+    @Override
+    public void addPart() {
+
+    }
 }

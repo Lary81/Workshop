@@ -19,4 +19,6 @@ public interface PartDao {
     List<Part> findPartByavailable_quantity();
 
     List<Part> findAll();
+
+    void addPart();
 }
